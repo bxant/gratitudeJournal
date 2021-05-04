@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'journal-entry',
+    loadChildren: () => import('./journal-entry/journal-entry.module').then( m => m.JournalEntryPageModule)
+  },
+  {
+    path: 'history-logs',
+    loadChildren: () => import('./history-logs/history-logs.module').then( m => m.HistoryLogsPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
 ];
 
 @NgModule({
