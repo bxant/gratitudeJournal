@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>journal-entry</ion-title>
+    <ion-title>Journal Entry</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <ion-item class = "journal-entry-position">
+    <ion-label position="stacked">{{dayOfEntry}}</ion-label>
+    <ion-textarea autocomplete = "true" spellcheck = "true" placeholder="I am grateful for..."></ion-textarea>
+  </ion-item>
 
 </ion-content>
