@@ -12,15 +12,22 @@ export class JournalEntryPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.date()
+    // initialization of date on startup of page.
+    this.date();
   }
 
   date()
   {
+    // Void function, only used for updating dayOfEntry for Journal
     // Will display date of entry for user
     var stringDate = new Date;
     this.dayOfEntry = stringDate.toDateString();
-    return new Date;
+  }
+
+  submitEntry()
+  {
+    // Submitting entry to gratitude journal database
+    console.log("button pressed");
   }
 
 }
