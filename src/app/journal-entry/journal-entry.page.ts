@@ -8,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class JournalEntryPage implements OnInit {
 
   public dayOfEntry:string;
+  public journalEntryText:Array<string>;
 
   constructor() { }
 
   ngOnInit() {
     // initialization of date on startup of page.
     this.date();
+    this.journalEntryText = [];
   }
 
   date()
@@ -28,6 +30,10 @@ export class JournalEntryPage implements OnInit {
   {
     // Submitting entry to gratitude journal database
     console.log("button pressed");
+    console.log(this.journalEntryText.length);
+    // should call data/gratitudeJournalEntry and fill constructor with required information.
+    // look at constructor for more details.
+    
   }
 
 }
