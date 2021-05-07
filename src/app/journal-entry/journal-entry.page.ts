@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GratitudeService } from '../services/gratitude.service';
 
 @Component({
   selector: 'app-journal-entry',
@@ -8,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class JournalEntryPage implements OnInit {
 
   public dayOfEntry:string;
-  public journalEntryText:Array<string>;
+  public journalEntryTextArray:Array<any>;
+  public entry:string;
+  public tempArray:Array<string>;
 
   constructor() { }
 
   ngOnInit() {
     // initialization of date on startup of page.
     this.date();
-    this.journalEntryText = [];
+    this.journalEntryTextArray = [];
   }
 
   date()
@@ -26,11 +29,24 @@ export class JournalEntryPage implements OnInit {
     this.dayOfEntry = stringDate.toDateString();
   }
 
+  makeDict(date, text){
+    //makes dictionary of with date of entry and text from entry
+    var dict = {"date": date, "text": text};
+    return dict;
+  }
+
   submitEntry()
   {
     // Submitting entry to gratitude journal database
     console.log("button pressed");
-    console.log(this.journalEntryText.length);
+    //console.log(this.entry);
+    var thisentry = this.makeDict(this.dayOfEntry, this.entry);
+    //console.log(thisentry);
+    this.journalEntryTextArray.push(thisentry);
+    //console.log(this.journalEntryTextArray.length);
+    //console.log(this.journalEntryTextArray)
+    GratitudeService.AllGratitudeJournalEntries = this.journalEntryTextArray;
+    console.log(GratitudeService.AllGratitudeJournalEntries)
     // should call data/gratitudeJournalEntry and fill constructor with required information.
     // look at constructor for more details.
     

@@ -1,4 +1,4 @@
-import { generate } from 'shortid';
+//import { generate } from 'shortid';
 
 export class JournalPageEntry {
 
@@ -9,7 +9,7 @@ export class JournalPageEntry {
     constructor(gratitudeText:string)
     {
         // constructor takes in an ID, and when the entry was logged.
-        this.id = generate();
+        //this.id = generate();
         this.loggedAt = new Date();
     }
 

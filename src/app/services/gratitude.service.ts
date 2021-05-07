@@ -5,7 +5,7 @@ import { JournalPageEntry } from '../data/journal-page-entry';
 })
 export class GratitudeService {
 
-  public static AllGratitudeJournalEntries:JournalPageEntry[] = [];
+  public static AllGratitudeJournalEntries= [];
 
   constructor() { }
 

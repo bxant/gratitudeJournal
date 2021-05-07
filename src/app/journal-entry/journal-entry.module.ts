@@ -18,3 +18,5 @@ import { JournalEntryPage } from './journal-entry.page';
   declarations: [JournalEntryPage]
 })
 export class JournalEntryPageModule {}
+
+

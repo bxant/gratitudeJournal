@@ -4,14 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-button (click) = "triggerShow()">{{buttonText}}</ion-button>
 
-  <ion-card>
-		<ion-card-header color="primary">
-			<ion-card-title>
-				History Viewing
-			</ion-card-title>
-		</ion-card-header>
+<ion-content *ngIf = "show == true">
+
+	<ion-card *ngFor = "let entry of entries">
+		<ion-item><strong>{{entry.date}}</strong></ion-item>
+		<ion-item> {{entry.text}} </ion-item>
 	</ion-card>
 
 </ion-content>
