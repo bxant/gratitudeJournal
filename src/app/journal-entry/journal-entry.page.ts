@@ -38,8 +38,7 @@ export class JournalEntryPage implements OnInit {
   {
     console.log("button pressed");   
     // Submitting entry to gratitude journal database
-    // TODO: Make sure to make the toast notification a separate function.
-    // Also, complete the error checking. Check if duplicate journal entry.
+    // complete the error checking. Check if duplicate journal entry.
     // Maybe to do later: check if duplicate entry, and if so, ask user if they would
     // like to replace their current journal entry with the newest updated one instead of just notifying
     // of successful submission.
@@ -58,6 +57,9 @@ export class JournalEntryPage implements OnInit {
 
   async giveNotification(entryID:string)
   {
+    // This notification function will alert user if a journal entry was added
+    // with the additional functionality of being able to delete the entry upon
+    // pressing undo button.
     const add_toast = await this.toaster.create(
       {
         message: "journal entry added!",
