@@ -4,8 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-item class = "journal-entry-position">
+<ion-ccontent>
+  <br>
+  <br>
+  <ion-item id = "textEntry">
     <ion-label position="stacked">{{dayOfEntry}}</ion-label>
     <ion-textarea autocomplete = "true" spellcheck = "true" placeholder="I am grateful for..."
     [(ngModel)] = "entry">
@@ -13,7 +15,7 @@
     </ion-textarea>
   </ion-item>
 
-  <ion-button (click) = "submitEntry()">Add to Journal
+  <ion-button id = "entryButton" (click) = "submitEntry()">Submit Entry
   </ion-button>
 
 
