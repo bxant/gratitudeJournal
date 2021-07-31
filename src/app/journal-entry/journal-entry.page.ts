@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { GratitudeService } from '../services/gratitude.service';
 import { JournalPageEntry } from '../data/journal-page-entry';
-import { ToastController } from '@ionic/angular'
+
+
+import { MenuController, ToastController, AlertController } from '@ionic/angular';
+
+
+import { generate } from 'shortid';
 
 @Component({
   selector: 'app-journal-entry',
@@ -36,7 +41,6 @@ export class JournalEntryPage implements OnInit {
 
   public submitEntry()
   {
-    console.log("button pressed");   
     // Submitting entry to gratitude journal database
     // complete the error checking. Check if duplicate journal entry.
     // Maybe to do later: check if duplicate entry, and if so, ask user if they would
@@ -44,25 +48,32 @@ export class JournalEntryPage implements OnInit {
     // of successful submission.
     if (this.journalEntryText == '')
     {
-      console.log("no text entered yet");
+      var emptyID = generate();
+      this.giveFailedNotification(emptyID, "No entry added");
+      this.GratService.deleteFromStorage(emptyID);
     }
     else
     {
-      var entryToAdd = new JournalPageEntry(this.journalEntryText);
+      // keeps spaces.
+      // var entryArraySplit = this.journalEntryText.split(/(\s+)/);
+      // keeps only text
+      var entrySplitSpaces = this.journalEntryText.split(" ");
+      var entryToAdd = new JournalPageEntry(entrySplitSpaces);
+      console.log(entryToAdd);
       // Already implemented with ionic storage
       this.GratService.logGratitudeJournalEntry(entryToAdd);
-      this.giveNotification(entryToAdd.id);
+      this.giveSuccessNotification(entryToAdd.id, "Journal Entry Added!");
     }
   }
 
-  async giveNotification(entryID:string)
+  async giveSuccessNotification(entryID:string, notificationString:string)
   {
     // This notification function will alert user if a journal entry was added
     // with the additional functionality of being able to delete the entry upon
     // pressing undo button.
     const add_toast = await this.toaster.create(
       {
-        message: "journal entry added!",
+        message: notificationString,
         duration: 2000,
         color: "medium",
         buttons: [
@@ -74,6 +85,20 @@ export class JournalEntryPage implements OnInit {
             }
           }
         ]
+      });
+    add_toast.present();
+  }
+
+  async giveFailedNotification(entryID:string, notificationString:string)
+  {
+    // This notification function will alert user if a journal entry was added
+    // with the additional functionality of being able to delete the entry upon
+    // pressing undo button.
+    const add_toast = await this.toaster.create(
+      {
+        message: notificationString,
+        duration: 2000,
+        color: "medium"
       });
     add_toast.present();
   }

@@ -33,7 +33,7 @@ export class GratitudeService {
   {
     var allValues = [];
     this.JournalEntryDatabase.forEach((value, key, index) => {
-      allValues.push(new JournalPageEntry(value.journalEntryText));
+      allValues.push(new JournalPageEntry(value));
     });
     return allValues;
   }

@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Past Entries</ion-title>
+    <ion-title>Journal History</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content fullscreen>
+  <ion-item class = "journal-entry-position">
+    <ion-label position="stacked">{{dayOfEntry}}</ion-label>
+    <ion-textarea autocomplete = "true" spellcheck = "true" placeholder="I am grateful for..."
+    [(ngModel)] = "journalEntryText">
 
-<ion-content>
+    </ion-textarea>
+  </ion-item>
+  
 
-	<ion-card>
-		<ion-card-title>Viewing History</ion-card-title>
-		<ion-card-content>
-			currently blank
-		</ion-card-content>
-	</ion-card>
 
 </ion-content>
